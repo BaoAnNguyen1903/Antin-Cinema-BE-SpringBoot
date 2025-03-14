@@ -24,7 +24,7 @@ import lombok.ToString;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer uid;
+    private int uid;
 
     @Column(length = 64)
     private String name;
@@ -50,9 +50,11 @@ public class User {
     @Column(columnDefinition = "TEXT")
     private String avatar;
 
-    private Integer points;
+    @Column(name = "points")
+    private int points;
 
-    private Integer status;
+    @Column(name = "status")
+    private int status;
 
     @Column(length = 1)
     private String role;
