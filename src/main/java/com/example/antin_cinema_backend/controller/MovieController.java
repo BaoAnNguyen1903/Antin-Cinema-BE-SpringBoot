@@ -20,22 +20,22 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    @GetMapping
+    @GetMapping("/ViewAllMoviesList")
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/ViewMovieById/{id}")
     public Movie getMovieById(@PathVariable int id) {
         return movieService.getMovieById(id);
     }
 
-    @PostMapping
+    @PostMapping("/CreateNewMovie")
     public Movie createMovie(@RequestBody Movie movie) {
         return movieService.createMovie(movie);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/DeleteMovie/{id}")
     public void deleteMovie(@PathVariable int id) {
         movieService.deleteMovie(id);
     }

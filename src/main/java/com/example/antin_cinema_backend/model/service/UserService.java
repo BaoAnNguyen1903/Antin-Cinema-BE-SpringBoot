@@ -24,7 +24,7 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public void deleteMovie(int uid) {
+    public void deleteUser(int uid) {
         userRepo.deleteById(uid);
     }
 }
