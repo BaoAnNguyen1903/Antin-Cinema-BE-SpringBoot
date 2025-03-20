@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/ViewUserById/{id}")
-    public User getMovieById(@PathVariable int id) {
+    public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
