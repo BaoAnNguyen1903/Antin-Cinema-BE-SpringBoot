@@ -8,11 +8,11 @@ import com.example.antin_cinema_backend.model.entity.MovieType;
 import com.example.antin_cinema_backend.model.repo.MovieTypeRepo;
 
 @Service
-public class MovieTypeSerive {
+public class MovieTypeService {
     @Autowired
     private MovieTypeRepo movieTypeRepo;
 
-    public List<MovieType> getAllMovies() {
+    public List<MovieType> getAllMovieTypes() {
         return movieTypeRepo.findAll();
     }
 
