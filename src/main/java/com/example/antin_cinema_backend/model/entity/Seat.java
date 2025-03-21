@@ -1,7 +1,5 @@
 package com.example.antin_cinema_backend.model.entity;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,5 +35,8 @@ public class Seat {
 
     @OneToOne
     @JoinColumn(name = "seat_type", nullable = false)
-    private 
+    private SeatType seatType;
+
+    @Column(name = "seat_price")
+    private float seat_price;
 }
