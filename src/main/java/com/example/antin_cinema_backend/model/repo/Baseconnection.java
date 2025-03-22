@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Baseconnection {
     static String url = "jdbc:mysql://localhost:3306/antin_cinema";
     static String username = "root";

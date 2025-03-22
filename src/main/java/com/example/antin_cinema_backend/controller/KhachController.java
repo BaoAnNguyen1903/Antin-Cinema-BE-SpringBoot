@@ -3,6 +3,7 @@ package com.example.antin_cinema_backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.example.antin_cinema_backend.model.entity.Khach;
 import com.example.antin_cinema_backend.model.service.KhachService;
 
 @RestController
+@Controller
 @RequestMapping("/api/v1/khach")
 public class KhachController {
     @Autowired
