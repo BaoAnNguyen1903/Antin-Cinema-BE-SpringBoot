@@ -11,13 +11,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Entity
-@Table(name = "movie_rated")
 public class MovieRated {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mrid;
-
-    @Column(length = 100)
     private String movie_rated_name;
 }
