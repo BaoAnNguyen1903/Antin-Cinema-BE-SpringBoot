@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.antin_cinema_backend.model.entity.User;
 
+@Repository
 public class UserRepo {
     public ArrayList<User> getAllUsers() throws Exception {
         ArrayList<User> UserList = new ArrayList<>();
@@ -65,12 +68,12 @@ public class UserRepo {
         return user;
     }
 
-    public void addNewUser(User user) throws Exception {
+    public void createUser(User user) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
         PreparedStatement ps = con.prepareStatement(
-                "insert into users(name, dob, gender, phone, email, username, password, avatar, points, status, role) values(?,?,?,?,?,? ?,?,?,?,?)");
+                "insert into users(name, dob, gender, phone, email, username, password, avatar, points, status, role) values(?,?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1, user.getName());
         ps.setDate(2, user.getDob());
         ps.setString(3, user.getGender());

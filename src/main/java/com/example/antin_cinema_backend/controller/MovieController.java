@@ -1,42 +1,42 @@
-package com.example.antin_cinema_backend.controller;
+// package com.example.antin_cinema_backend.controller;
 
-import java.util.List;
+// import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.web.bind.annotation.DeleteMapping;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PathVariable;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RestController;
 
-import com.example.antin_cinema_backend.model.entity.Movie;
-import com.example.antin_cinema_backend.model.service.MovieService;
+// import com.example.antin_cinema_backend.model.entity.Movie;
+// import com.example.antin_cinema_backend.model.service.MovieService;
 
-@RestController
-@RequestMapping("/api/v1/movie")
-public class MovieController {
-    @Autowired
-    private MovieService movieService;
+// @RestController
+// @RequestMapping("/api/v1/movie")
+// public class MovieController {
+// @Autowired
+// private MovieService movieService;
 
-    @GetMapping("/ViewAllMoviesList")
-    public List<Movie> getAllMovies() {
-        return movieService.getAllMovies();
-    }
+// @GetMapping("/ViewAllMoviesList")
+// public List<Movie> getAllMovies() {
+// return movieService.getAllMovies();
+// }
 
-    @GetMapping("/ViewMovieById/{id}")
-    public Movie getMovieById(@PathVariable int id) {
-        return movieService.getMovieById(id);
-    }
+// @GetMapping("/ViewMovieById/{id}")
+// public Movie getMovieById(@PathVariable int id) {
+// return movieService.getMovieById(id);
+// }
 
-    @PostMapping("/CreateNewMovie")
-    public Movie createMovie(@RequestBody Movie movie) {
-        return movieService.createMovie(movie);
-    }
+// @PostMapping("/CreateNewMovie")
+// public Movie createMovie(@RequestBody Movie movie) {
+// return movieService.createMovie(movie);
+// }
 
-    @DeleteMapping("/DeleteMovie/{id}")
-    public void deleteMovie(@PathVariable int id) {
-        movieService.deleteMovie(id);
-    }
-}
+// @DeleteMapping("/DeleteMovie/{id}")
+// public void deleteMovie(@PathVariable int id) {
+// movieService.deleteMovie(id);
+// }
+// }
