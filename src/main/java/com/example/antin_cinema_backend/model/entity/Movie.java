@@ -1,7 +1,6 @@
 package com.example.antin_cinema_backend.model.entity;
 
-import java.sql.Date;
-
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +24,7 @@ public class Movie {
     private MovieRated movieRated;
     private String poster;
     private String banner;
-    private Date openday;
-    private Date closeday;
+    private LocalDate openday;
+    private LocalDate closeday;
     private int movieStatus;
 }
