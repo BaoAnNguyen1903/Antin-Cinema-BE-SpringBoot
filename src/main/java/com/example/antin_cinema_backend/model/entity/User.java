@@ -1,7 +1,6 @@
 package com.example.antin_cinema_backend.model.entity;
 
 import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
