@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.Khach;
 
 @Repository

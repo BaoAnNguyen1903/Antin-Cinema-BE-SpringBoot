@@ -9,9 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.User;
 
 @Repository
