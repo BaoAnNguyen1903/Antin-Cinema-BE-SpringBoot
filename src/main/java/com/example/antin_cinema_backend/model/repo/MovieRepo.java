@@ -8,13 +8,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.antin_cinema_backend.model.entity.Movie;
+import com.example.antin_cinema_backend.model.entity.MovieType;
 import com.example.antin_cinema_backend.model.entity.User;
 
 @Repository
 public class MovieRepo {
+    @Autowired
+    private MovieTypeRepo movieTypeRepo;
     public ArrayList<Movie> getAllMovies() throws Exception {
         ArrayList<Movie> MovieList = new ArrayList<>();
         Class.forName(Baseconnection.nameClass);
@@ -24,7 +28,14 @@ public class MovieRepo {
         ResultSet rs = stm.executeQuery("select * from movie");
         while (rs.next()) {
             int mid = rs.getInt("mid");
-            String movie_name = rs.getString("movie_name");
+            String movieName = rs.getString("movie_name");
+            String movieDescription = rs.getString("movie_description");
+            String movieDirector = rs.getString("movie_director");
+            String movieActor = rs.getString("movie_actor");
+            int mtid = rs.getInt("mtid");
+            MovieType movieType = movieTypeRepo.getMovieTypeById(mtid);
+            String movieTime = rs.getString("movie_time");
+
             UserList.add(user);
         }
         return MovieList;
