@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 import java.sql.Connection;
 import java.sql.Statement;
-
 import com.example.antin_cinema_backend.model.entity.SeatType;
 
 @Repository
