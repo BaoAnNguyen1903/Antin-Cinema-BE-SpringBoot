@@ -17,6 +17,6 @@ public class MovieShowtime {
     private int msid;
     private Movie movie;
     private Room room;
-    private LocalDateTime start_time;
-    private LocalDateTime end_time;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

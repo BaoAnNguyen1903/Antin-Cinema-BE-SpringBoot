@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class MovieType {
     private int mtid;
-    private String movie_type_name;
+    private String movieTypeName;
 }

@@ -13,5 +13,5 @@ import lombok.ToString;
 @Setter
 public class MovieRated {
     private int mrid;
-    private String movie_rated_name;
+    private String movieRatedName;
 }

@@ -13,5 +13,5 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Room {
     private int rid;
-    private int room_name;
+    private int roomName;
 }

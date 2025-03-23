@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class MovieLanguage {
     private int mlid;
-    private String movie_language_name;
+    private String movieLanguageName;
 }

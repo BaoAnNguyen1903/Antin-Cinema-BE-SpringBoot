@@ -14,7 +14,7 @@ import lombok.ToString;
 public class Seat {
     private int sid;
     private Room room;
-    private String seat_location;
+    private String seatLocation;
     private SeatType seatType;
-    private float seat_price;
+    private float seatPrice;
 }

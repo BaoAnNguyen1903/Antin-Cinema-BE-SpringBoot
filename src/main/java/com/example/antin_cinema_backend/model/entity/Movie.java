@@ -15,17 +15,17 @@ import lombok.ToString;
 @ToString
 public class Movie {
     private int mid;
-    private String movie_name;
-    private String movie_description;
-    private String movie_director;
-    private String movie_actor;
+    private String movieName;
+    private String movieDescription;
+    private String movieDirector;
+    private String movieActor;
     private MovieType movieType;
-    private String movie_time;
+    private String movieTime;
     private MovieLanguage movieLanguage;
     private MovieRated movieRated;
     private String poster;
     private String banner;
     private Date openday;
     private Date closeday;
-    private int movie_status;
+    private int movieStatus;
 }

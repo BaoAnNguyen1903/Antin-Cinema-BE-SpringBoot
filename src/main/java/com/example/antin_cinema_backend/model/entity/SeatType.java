@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class SeatType {
     private int stid;
-    private String seat_type_name;
+    private String seatTypeName;
 }
