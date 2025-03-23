@@ -19,7 +19,7 @@ public class MovieTypeRepo {
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery("select * from movie_type");
         while (rs.next()) {
-            int mtid = rs.getInt("mitd");
+            int mtid = rs.getInt("mtid");
             String movieTypeName = rs.getString("movie_type_name");
             MovieType movieType = new MovieType(mtid, movieTypeName);
             MovieTypeList.add(movieType);
