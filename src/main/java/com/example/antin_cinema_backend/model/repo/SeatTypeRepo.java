@@ -28,70 +28,40 @@ public class SeatTypeRepo {
         return SeatTypeList;
     }
 
-    public User getUserById(int uid) throws Exception {
+    public SeatType getSeatTypeById(int stid) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
-        PreparedStatement ps = con.prepareStatement("select * from users where uid = ?");
-        ps.setInt(1, uid);
+        PreparedStatement ps = con.prepareStatement("select * from seat_type where stid = ?");
+        ps.setInt(1, stid);
         ps.executeQuery();
         ResultSet rs = ps.getResultSet();
         rs.next();
-        int uid1 = rs.getInt("uid");
-        String name = rs.getString("name");
-        Date dob = rs.getDate("dob");
-        String gender = rs.getString("gender");
-        String phone = rs.getString("phone");
-        String email = rs.getString("email");
-        String username = rs.getString("username");
-        String password = rs.getString("password");
-        String avatar = rs.getString("avatar");
-        int points = rs.getInt("points");
-        int status = rs.getInt("status");
-        String role = rs.getString("role");
-        User user = new User(uid1, name, dob, gender, phone, email, username, password, avatar, points, status, role);
-        return user;
+        int stid1 = rs.getInt("stid");
+        String seatTypeName = rs.getString("seat_type_name");
+        SeatType seatType = new SeatType(stid1, seatTypeName);
+        return seatType;
     }
 
-    public void createUser(User user) throws Exception {
+    public void createSeatType(SeatType seatType) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
         PreparedStatement ps = con.prepareStatement(
-                "insert into users(name, dob, gender, phone, email, username, password, avatar, points, status, role) values(?,?,?,?,?,?,?,?,?,?,?)");
-        ps.setString(1, user.getName());
-        ps.setDate(2, user.getDob());
-        ps.setString(3, user.getGender());
-        ps.setString(4, user.getPhone());
-        ps.setString(5, user.getEmail());
-        ps.setString(6, user.getUsername());
-        ps.setString(7, user.getPassword());
-        ps.setString(8, user.getAvatar());
-        ps.setInt(9, user.getPoints());
-        ps.setInt(10, user.getStatus());
-        ps.setString(11, user.getRole());
+                "insert into seat_type(seat_type_name) values(?)");
+        ps.setString(1, seatType.getSeatTypeName());
         ps.executeUpdate();
         ps.close();
     }
 
-    public void updateUserById(User user) throws Exception {
+    public void updateSeatTypeById(SeatType seatType) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
         PreparedStatement ps = con.prepareStatement(
-                "update users set name = ?, dob = ?, gender = ?, phone = ?, email = ?, username = ?, password = ?, avatar = ?, points = ?, status = ? , role = ? where uid = ?");
-        ps.setString(1, user.getName());
-        ps.setDate(2, user.getDob());
-        ps.setString(3, user.getGender());
-        ps.setString(4, user.getPhone());
-        ps.setString(5, user.getEmail());
-        ps.setString(6, user.getUsername());
-        ps.setString(7, user.getPassword());
-        ps.setString(8, user.getAvatar());
-        ps.setInt(9, user.getPoints());
-        ps.setInt(10, user.getStatus());
-        ps.setString(11, user.getRole());
-        ps.setInt(12, user.getUid());
+                "update seat_type set seat_type_name = ? where stid = ?");
+        ps.setString(1, seatType.getSeatTypeName());
+        ps.setInt(2, seatType.getStid());
         ps.executeUpdate();
         ps.close();
         con.close();
