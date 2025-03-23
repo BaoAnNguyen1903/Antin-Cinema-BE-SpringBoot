@@ -1,17 +1,13 @@
 package com.example.antin_cinema_backend.model.repo;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.Room;
-import com.example.antin_cinema_backend.model.entity.User;
 
 @Repository
 public class RoomRepo {
