@@ -90,20 +90,22 @@ create table seat(
 
 create table discount(
 	discount_id int auto_increment primary key,
-    discountCode varchar(64),
-    discountDescription varchar(255),
-    discountPercentage int,
+    uid int,
+    foreign key (uid) references users(uid),
+    discount_code varchar(64),
+    discount_description varchar(255),
+    discount_percentage float,
+    number_of_discount int,
+    total_use int,
     start_date date,
     end_date date,
-    min_ticket_quantity int,
-    max_ticket_quantity int,
-	max_discount_amount int,
+    min_amount float,
+    max_amount float,
     status int
 );
 
 create table booking(
 	bid int auto_increment primary key,
-    date timestamp,
     uid int,
     foreign key (uid) references users(uid),
     msid int,
@@ -112,7 +114,34 @@ create table booking(
     foreign key(sid) references seat(sid),
     discount_id int,
     foreign key(discount_id) references discount(discount_id),
-    totalprice float,
-    status tinyint,
-    vnpay_data json
+    create_date datetime,
+    total_price float,
+    status int
+);
+
+create table vnpay_bill(
+    vnpTxnRef varchar(64),
+    vnpAmount float,
+    vnpPayDate varchar(64),
+    vnpTransactionStatus varchar(64),
+    bid int,
+    foreign key (bid) references booking(bid)
+);
+
+create table refund(
+    refund_id int auto_increment primary key,
+    bid int,
+    foreign key (bid) references booking(bid),
+    refund_reason text,
+    refundAmount decimal(10,2),
+    refundStatus varchar(64),
+    createDate date,
+    refundOption int
+);
+
+create table reward_redemption(
+    redemption_id int auto_increment primary key,
+    uid int,
+    foreign key (uid) references users(uid),
+    number_of_points int
 );
