@@ -46,7 +46,7 @@ public class KhachRepo {
         return khach;
     }
 
-    public void addNewKhach(Khach khach) throws Exception {
+    public void createKhach(Khach khach) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);

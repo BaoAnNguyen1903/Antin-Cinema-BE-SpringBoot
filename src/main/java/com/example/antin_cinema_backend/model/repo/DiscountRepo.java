@@ -70,7 +70,7 @@ public class DiscountRepo {
         return discount;
     }
 
-    public void addNewDiscount(Discount discount) throws Exception {
+    public void createDiscount(Discount discount) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
