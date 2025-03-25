@@ -7,12 +7,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.Discount;
-import com.example.antin_cinema_backend.model.entity.Khach;
 import com.example.antin_cinema_backend.model.entity.User;
 
 @Repository
@@ -73,5 +70,24 @@ public class DiscountRepo {
         return discount;
     }
 
-    
+    public void addNewDiscount(Discount discount) throws Exception {
+        Class.forName(Baseconnection.nameClass);
+        Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
+                Baseconnection.password);
+        PreparedStatement ps = con.prepareStatement(
+                "insert into discount(uid, discount_code, discount_description, discount_percentage, number_of_discount,total_use,start_date,end_date ,min_amount,max_amount, status) values(?,?,?,?,?,?,?,?,?,?,?)");
+        ps.setInt(1, discount.getUser().getUid());
+        ps.setString(2, discount.getDiscountCode());
+        ps.setString(3, discount.getDiscountDescription());
+        ps.setFloat(4, discount.getDiscountPercentage());
+        ps.setInt(5, discount.getNumberOfDiscount());
+        ps.setInt(6, discount.getTotalUse());
+        ps.setDate(7, java.sql.Date.valueOf(discount.getStartDate()));
+        ps.setDate(8, java.sql.Date.valueOf(discount.getEndDate()));
+        ps.setFloat(9, discount.getMinAmount());
+        ps.setFloat(10, discount.getMaxAmount());
+        ps.setInt(11, discount.getStatus());
+        ps.executeUpdate();
+        ps.close();
+    }
 }
