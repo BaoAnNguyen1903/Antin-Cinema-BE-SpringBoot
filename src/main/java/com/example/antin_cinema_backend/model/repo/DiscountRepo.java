@@ -47,5 +47,31 @@ public class DiscountRepo {
         return DiscountList;
     }
 
+    public Discount getDiscountById(int discountId) throws Exception {
+        Class.forName(Baseconnection.nameClass);
+        Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
+                Baseconnection.password);
+        PreparedStatement ps = con.prepareStatement("select * from discount where discount_id = ?");
+        ps.setInt(1, discountId);
+        ps.executeQuery();
+        ResultSet rs = ps.getResultSet();
+        rs.next();
+        int discountId1 = rs.getInt("discount_id");
+        int uid = rs.getInt("uid");
+        User user = userRepo.getUserById(uid);
+        String discoutCode = rs.getString("discount_code");
+        String discoutDescription = rs.getString("discount_description");
+        float discountPercentage = rs.getFloat("discount_percentage");
+        int totalUse = rs.getInt("total_use");
+        LocalDate startDate = rs.getDate("start_date").toLocalDate();
+        LocalDate endDate = rs.getDate("end_date").toLocalDate();
+        float minAmount = rs.getFloat("min_amount");
+        float maxAmount = rs.getFloat("max_amount");
+        int status = rs.getInt("status");
+        Discount discount = new Discount(discountId1, user, discoutCode, discoutDescription, discountPercentage,
+                discountId1, totalUse, startDate, endDate, minAmount, maxAmount, status);
+        return discount;
+    }
+
     
 }
