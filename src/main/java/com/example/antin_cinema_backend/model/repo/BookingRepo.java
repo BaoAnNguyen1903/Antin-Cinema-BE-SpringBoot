@@ -8,13 +8,10 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.Booking;
 import com.example.antin_cinema_backend.model.entity.Discount;
-import com.example.antin_cinema_backend.model.entity.Khach;
 import com.example.antin_cinema_backend.model.entity.MovieShowtime;
 import com.example.antin_cinema_backend.model.entity.Seat;
 import com.example.antin_cinema_backend.model.entity.User;
