@@ -1,30 +1,26 @@
-// package com.example.antin_cinema_backend.model.service;
+package com.example.antin_cinema_backend.model.service;
 
-// import java.util.List;
+import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.antin_cinema_backend.model.entity.MovieLanguage;
+import com.example.antin_cinema_backend.model.repo.MovieLanguageRepo;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
-// import com.example.antin_cinema_backend.model.entity.MovieLanguage;
-// import com.example.antin_cinema_backend.model.repo.MovieLanguageRepo;
+@Service
+public class MovieLanguageService {
+    @Autowired
+    private MovieLanguageRepo movieLanguageRepo;
 
-// @Service
-// public class MovieLanguageService {
-// @Autowired
-// private MovieLanguageRepo movieLanguageRepo;
+    public ArrayList<MovieLanguage> getAllMovieLanguages() throws Exception {
+        return movieLanguageRepo.getAllMovieLanguages();
+    }
 
-// public List<MovieLanguage> getAllMovieLanguages() {
-// return movieLanguageRepo.findAll();
-// }
+    public MovieLanguage getMovieLanguageById(int mlid) throws Exception {
+        return movieLanguageRepo.getMovieLanguageById(mlid);
+    }
 
-// public MovieLanguage getMovieLanguageById(int mlid) {
-// return movieLanguageRepo.findById(mlid).orElse(null);
-// }
-
-// public MovieLanguage createMovieLanguage(MovieLanguage movieLanguage) {
-// return movieLanguageRepo.save(movieLanguage);
-// }
-
-// public void deleteMovieLanguage(int mlid) {
-// movieLanguageRepo.deleteById(mlid);
-// }
-// }
+    public MovieLanguage createMovieLanguage(MovieLanguage movieLanguage) throws Exception {
+        movieLanguageRepo.createMovieLanguage(movieLanguage);
+        return movieLanguage;
+    }
+}
