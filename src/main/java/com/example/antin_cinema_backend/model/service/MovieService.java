@@ -1,31 +1,26 @@
-// package com.example.antin_cinema_backend.model.service;
+package com.example.antin_cinema_backend.model.service;
 
-// import java.util.List;
+import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.antin_cinema_backend.model.entity.Movie;
+import com.example.antin_cinema_backend.model.repo.MovieRepo;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+@Service
+public class MovieService {
+    @Autowired
+    private MovieRepo movieRepo;
 
-// import com.example.antin_cinema_backend.model.entity.Movie;
-// import com.example.antin_cinema_backend.model.repo.MovieRepo;
+    public ArrayList<Movie> getAllMovies() throws Exception {
+        return movieRepo.getAllMovies();
+    }
 
-// @Service
-// public class MovieService {
-// @Autowired
-// private MovieRepo movieRepo;
+    public Movie getMovieById(int mid) throws Exception {
+        return movieRepo.getMovieById(mid);
+    }
 
-// public List<Movie> getAllMovies() {
-// return movieRepo.findAll();
-// }
-
-// public Movie getMovieById(int mid) {
-// return movieRepo.findById(mid).orElse(null);
-// }
-
-// public Movie createMovie(Movie movie) {
-// return movieRepo.save(movie);
-// }
-
-// public void deleteMovie(int mid) {
-// movieRepo.deleteById(mid);
-// }
-// }
+    public Movie createMovie(Movie movie) throws Exception {
+        movieRepo.createMovie(movie);
+        return movie;
+    }
+}
