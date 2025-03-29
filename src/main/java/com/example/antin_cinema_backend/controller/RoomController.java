@@ -29,7 +29,7 @@ public class RoomController {
     }
 
     @GetMapping("/ViewRoomById/{rid}")
-    public ResponseEntity<String> getUserById(@PathVariable int rid) throws Exception {
+    public ResponseEntity<String> getRoomById(@PathVariable int rid) throws Exception {
         Room room = romService.getRoomById(rid);
         if (room == null) {
             return new ResponseEntity<>("{\"message\": \"Room not found\"}", HttpStatus.NOT_FOUND);
@@ -40,7 +40,7 @@ public class RoomController {
     }
 
     @PostMapping("/CreateRoom")
-    public ResponseEntity<String> createUser(@RequestBody Room room) throws Exception {
+    public ResponseEntity<String> createRoom(@RequestBody Room room) throws Exception {
         Room newRoom = romService.createRoom(room);
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResponse = objectMapper.writeValueAsString(newRoom);

@@ -29,7 +29,7 @@ public class MovieTypeController {
     }
 
     @GetMapping("/ViewMovieTypeById/{mtid}")
-    public ResponseEntity<String> getUserById(@PathVariable int mtid) throws Exception {
+    public ResponseEntity<String> getMovieTypeById(@PathVariable int mtid) throws Exception {
         MovieType movieType = movieTypeService.getMovieTypeById(mtid);
         if (movieType == null) {
             return new ResponseEntity<>("{\"message\": \"Movie Type not found\"}", HttpStatus.NOT_FOUND);

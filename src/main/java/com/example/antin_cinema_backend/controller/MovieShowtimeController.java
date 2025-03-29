@@ -21,15 +21,15 @@ public class MovieShowtimeController {
     private MovieShowtimeService movieShowtimeService;
 
     @GetMapping("/ViewAllMovieShowtimesList")
-    public ResponseEntity<String> getAllUsers() throws Exception {
+    public ResponseEntity<String> getAllMovieShowtimes() throws Exception {
         List<MovieShowtime> users = movieShowtimeService.getAllMovieShowtimes();
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResponse = objectMapper.writeValueAsString(users);
         return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/ViewMovieShowtimeById/{uid}")
-    public ResponseEntity<String> getUserById(@PathVariable int msid) throws Exception {
+    @GetMapping("/ViewMovieShowtimeById/{msid}")
+    public ResponseEntity<String> getMovieShowtimeById(@PathVariable int msid) throws Exception {
         MovieShowtime movieShowtime = movieShowtimeService.getMovieShowtimeById(msid);
         if (movieShowtime == null) {
             return new ResponseEntity<>("{\"message\": \"Movie Showtime not found\"}", HttpStatus.NOT_FOUND);
@@ -40,7 +40,7 @@ public class MovieShowtimeController {
     }
 
     @PostMapping("/CreateMovieShowtime")
-    public ResponseEntity<String> createUser(@RequestBody MovieShowtime movieShowtime) throws Exception {
+    public ResponseEntity<String> createMovieShowtime(@RequestBody MovieShowtime movieShowtime) throws Exception {
         MovieShowtime nMovieShowtime = movieShowtimeService.createMovieShowtime(movieShowtime);
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResponse = objectMapper.writeValueAsString(nMovieShowtime);
