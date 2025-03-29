@@ -31,14 +31,24 @@ public class RoomRepo {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
                 Baseconnection.password);
-        PreparedStatement ps = con.prepareStatement("select * from room where rid = ?");
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM room WHERE rid = ?");
         ps.setInt(1, rid);
-        ps.executeQuery();
-        ResultSet rs = ps.getResultSet();
-        rs.next();
+        ResultSet rs = ps.executeQuery();
+
+        // Nếu không tìm thấy kết quả, trả về null
+        if (!rs.next()) {
+            return null;
+        }
+
         int rid1 = rs.getInt("rid");
-        int roomName = rs.getInt("room_name");
+        int roomName = rs.getInt("room_name"); // Đảm bảo kiểu dữ liệu đúng
         Room room = new Room(rid1, roomName);
+
+        // Đóng tài nguyên
+        rs.close();
+        ps.close();
+        con.close();
+
         return room;
     }
 
