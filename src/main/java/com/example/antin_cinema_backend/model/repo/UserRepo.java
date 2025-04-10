@@ -66,6 +66,31 @@ public class UserRepo {
         return user;
     }
 
+    public User getUserByUsername(String username) throws Exception {
+        Class.forName(Baseconnection.nameClass);
+        Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
+                Baseconnection.password);
+        PreparedStatement ps = con.prepareStatement("select * from users where username = ?");
+        ps.setString(1, username);
+        ps.executeQuery();
+        ResultSet rs = ps.getResultSet();
+        rs.next();
+        int uid = rs.getInt("uid");
+        String name = rs.getString("name");
+        Date dob = rs.getDate("dob");
+        String gender = rs.getString("gender");
+        String phone = rs.getString("phone");
+        String email = rs.getString("email");
+        String username1 = rs.getString("username");
+        String password = rs.getString("password");
+        String avatar = rs.getString("avatar");
+        int points = rs.getInt("points");
+        int status = rs.getInt("status");
+        String role = rs.getString("role");
+        User user = new User(uid, name, dob, gender, phone, email, username1, password, avatar, points, status, role);
+        return user;
+    }
+
     public void createUser(User user) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
