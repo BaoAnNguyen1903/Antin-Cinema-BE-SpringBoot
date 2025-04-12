@@ -27,16 +27,25 @@ public class JwtUtil {
                 .compact();
     }
 
-    public String validateToken(String token) {
+    public boolean validateToken(String token) {
         try {
-            return Jwts.parserBuilder()
+            Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
-                    .parseClaimsJws(token)
-                    .getBody()
-                    .getSubject();
+                    .parseClaimsJws(token);
+            return true;
         } catch (JwtException e) {
-            return null;
+            return false;
         }
     }
+
+    public String getUsernameFromToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
 }
