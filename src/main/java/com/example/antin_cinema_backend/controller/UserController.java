@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.antin_cinema_backend.model.entity.Paginate;
+import com.example.antin_cinema_backend.model.entity.Meta;
 import com.example.antin_cinema_backend.model.entity.PaginateData;
 import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.service.PaginatedResult;
@@ -37,7 +37,7 @@ public class UserController {
         int total = paginatedResult.getTotal();
         int pages = (int) Math.ceil((double) total / pageSize);
 
-        Paginate meta = new Paginate(current, pageSize, pages, total);
+        Meta meta = new Meta(current, pageSize, pages, total);
         PaginateData<User> paginatedData = new PaginateData<>(meta, paginatedResult.getResult());
 
         Map<String, Object> response = new HashMap<>();

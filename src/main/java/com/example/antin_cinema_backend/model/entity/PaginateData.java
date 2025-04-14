@@ -14,11 +14,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaginateData<T> {
-    private Paginate paginate;
+    private Meta meta;
     private List<T> result;
 
     // public PaginatedData(Paginate paginate, List<T> result) {
-    //     this.paginate = paginate;
-    //     this.result = result;
+    // this.paginate = paginate;
+    // this.result = result;
     // }
 }

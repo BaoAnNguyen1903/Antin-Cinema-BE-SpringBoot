@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Paginate {
+public class Meta {
     private int current;
     private int pageSize;
     private int pages;
