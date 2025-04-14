@@ -58,10 +58,43 @@ public class UserController {
     }
 
     @PostMapping("/CreateUser")
-    public ResponseEntity<String> createUser(@RequestBody User user) throws Exception {
-        User newUser = userService.createUser(user);
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResponse = objectMapper.writeValueAsString(newUser);
-        return new ResponseEntity<>(jsonResponse, HttpStatus.CREATED);
+    public ResponseEntity<Map<String, Object>> createUser(@RequestBody Map<String, String> requestBody) {
+        User user = new User();
+        user.setName(requestBody.get("name"));
+        user.setUsername(requestBody.get("username"));
+        user.setPassword(requestBody.get("password"));
+        user.setEmail(requestBody.get("email"));
+
+        // Set default values
+        user.setDob(null);
+        user.setGender(null);
+        user.setPhone(null);
+        user.setAvatar(null);
+        user.setPoints(0);
+        user.setStatus(0);
+        user.setRole("U");
+
+        try {
+            User newUser = userService.createUser(user);
+
+            if (newUser == null) {
+                // Username hoặc Email đã tồn tại
+                Map<String, Object> errorResponse = new HashMap<>();
+                errorResponse.put("error", "Username or Email already exists");
+                return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT); // 409
+            }
+
+            // Trả về user vừa tạo trong object "data"
+            Map<String, Object> response = new HashMap<>();
+            response.put("data", newUser);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+        } catch (Exception e) {
+            // Lỗi hệ thống
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Internal server error");
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 }
