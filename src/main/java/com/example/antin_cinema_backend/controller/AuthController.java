@@ -19,8 +19,10 @@ import com.example.antin_cinema_backend.model.dto.LoginRequest;
 import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.repo.UserRepo;
 import com.example.antin_cinema_backend.model.service.AccountService;
+import com.example.antin_cinema_backend.model.service.TokenBlacklistService;
 import com.example.antin_cinema_backend.security.JwtUtil;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -34,6 +36,9 @@ public class AuthController {
 
         @Autowired
         AccountService accountService;
+
+        @Autowired
+        private TokenBlacklistService tokenBlacklistService;
 
         @PostMapping("/login")
         public ResponseEntity<?> login(@RequestBody LoginRequest request, HttpSession session)
@@ -127,4 +132,23 @@ public class AuthController {
                 }
         }
 
+        @PostMapping("/logout")
+        public ResponseEntity<?> logout(HttpServletRequest request) {
+                String token = extractTokenFromRequest(request);
+
+                if (token != null && !token.isEmpty()) {
+                        tokenBlacklistService.blacklistToken(token);
+                        return ResponseEntity.ok("Đăng xuất thành công");
+                }
+
+                return ResponseEntity.badRequest().body("Token không hợp lệ");
+        }
+
+        private String extractTokenFromRequest(HttpServletRequest request) {
+                String bearerToken = request.getHeader("Authorization");
+                if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+                        return bearerToken.substring(7);
+                }
+                return null;
+        }
 }
