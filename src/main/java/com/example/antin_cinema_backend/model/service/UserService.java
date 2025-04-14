@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -13,8 +14,19 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public ArrayList<User> getAllUsers() throws Exception {
-        return userRepo.getAllUsers();
+    public PaginatedResult<User> getUsersPaginated(int current, int pageSize) throws Exception {
+        List<User> allUsers = userRepo.getAllUsers(); // Lấy danh sách tất cả user
+        int total = allUsers.size();
+
+        int fromIndex = Math.max((current - 1) * pageSize, 0);
+        int toIndex = Math.min(fromIndex + pageSize, total);
+
+        List<User> paginatedList = new ArrayList<>();
+        if (fromIndex < toIndex) {
+            paginatedList = allUsers.subList(fromIndex, toIndex);
+        }
+
+        return new PaginatedResult<>(paginatedList, total);
     }
 
     public User getUserById(int uid) throws Exception {
