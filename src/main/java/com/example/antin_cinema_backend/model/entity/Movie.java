@@ -22,7 +22,7 @@ public class Movie {
     private String movieTime;
     private MovieLanguage movieLanguage;
     private MovieRated movieRated;
-    private String poster;
+    private String poster;  
     private String banner;
     private LocalDate openday;
     private LocalDate closeday;

@@ -53,17 +53,18 @@ public class AuthController {
                 String accessToken = jwtUtil.generateToken(user.getUsername());
 
                 session.setAttribute("user", user);
-                Map<String, Object> userData = Map.of(
-                                "uid", user.getUid(),
-                                "name", user.getName(),
-                                "dob", user.getDob(),
-                                "gender", user.getGender(),
-                                "phone", user.getPhone(),
-                                "email", user.getEmail(),
-                                "avatar", user.getAvatar(),
-                                "points", user.getPoints(),
-                                "status", user.getStatus(),
-                                "role", user.getRole());
+                System.out.println("user  : " + user);
+                Map<String, Object> userData = new HashMap<>();
+                userData.put("uid", user.getUid());
+                userData.put("name", user.getName());
+                userData.put("dob", user.getDob());
+                userData.put("gender", user.getGender());
+                userData.put("phone", user.getPhone());
+                userData.put("email", user.getEmail());
+                userData.put("avatar", user.getAvatar());
+                userData.put("points", user.getPoints());
+                userData.put("status", user.getStatus());
+                userData.put("role", user.getRole());
 
                 Map<String, Object> data = Map.of(
                                 "access_token", accessToken,
@@ -138,7 +139,9 @@ public class AuthController {
 
                 if (token != null && !token.isEmpty()) {
                         tokenBlacklistService.blacklistToken(token);
-                        return ResponseEntity.ok("Đăng xuất thành công");
+                        Map<String, String> response = new HashMap<>();
+                        response.put("data", "ok");
+                        return ResponseEntity.ok(response);
                 }
 
                 return ResponseEntity.badRequest().body("Token không hợp lệ");

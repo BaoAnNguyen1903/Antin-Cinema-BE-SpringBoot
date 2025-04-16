@@ -106,4 +106,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed");
         }
     }
+
+    @GetMapping
+    public ResponseEntity<?> getUsers(
+            @RequestParam(defaultValue = "1") int current,
+            @RequestParam(defaultValue = "5") int pageSize,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email) {
+        return ResponseEntity.ok(userService.getUsers(current, pageSize, name, email));
+    }
 }
