@@ -1,4 +1,4 @@
-package com.example.antin_cinema_backend.model.entity;
+    package com.example.antin_cinema_backend.model.entity;
 
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
