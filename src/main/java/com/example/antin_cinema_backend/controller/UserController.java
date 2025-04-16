@@ -2,7 +2,6 @@ package com.example.antin_cinema_backend.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.antin_cinema_backend.model.dto.UserUpdateDTO;
 import com.example.antin_cinema_backend.model.entity.Meta;
 import com.example.antin_cinema_backend.model.entity.PaginateData;
