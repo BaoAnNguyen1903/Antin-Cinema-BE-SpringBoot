@@ -98,12 +98,12 @@ public class UserController {
     }
 
     @PutMapping("/UpdateUser")
-    public ResponseEntity<String> updateUser(@RequestBody User user) throws Exception {
-        boolean updated = userService.updateUser(user);
+    public ResponseEntity<String> updateUser(@RequestBody UserUpdateDTO userDTO) throws Exception {
+        boolean updated = userService.updateUser(userDTO);
         if (updated) {
             return ResponseEntity.ok("User updated successfully");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
     }
 

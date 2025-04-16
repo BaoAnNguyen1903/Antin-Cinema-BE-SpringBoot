@@ -53,11 +53,27 @@ public class UserService {
         return user;
     }
 
-    public boolean updateUser(User user) throws Exception {
-        if (!userRepo.existsByUsername(user.getUsername())) {
-            return false; // Trả về false nếu user không tồn tại
+    public boolean updateUser(UserUpdateDTO dto) throws Exception {
+        User existingUser = userRepo.getUserById(dto.getUid()); // cần hàm này
+        if (existingUser == null) {
+            return false;
         }
-        userRepo.updateUserById(user);
+
+        // Cập nhật từng trường nếu khác null
+        if (dto.getName() != null)
+            existingUser.setName(dto.getName());
+        if (dto.getDob() != null)
+            existingUser.setDob(dto.getDob());
+        if (dto.getGender() != null)
+            existingUser.setGender(dto.getGender());
+        if (dto.getPhone() != null)
+            existingUser.setPhone(dto.getPhone());
+        if (dto.getEmail() != null)
+            existingUser.setEmail(dto.getEmail());
+        if (dto.getAvatar() != null)
+            existingUser.setAvatar(dto.getAvatar());
+
+        userRepo.updateUserById(existingUser);
         return true;
     }
 
