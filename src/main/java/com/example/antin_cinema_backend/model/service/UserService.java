@@ -1,5 +1,6 @@
 package com.example.antin_cinema_backend.model.service;
 
+import com.example.antin_cinema_backend.model.dto.UserUpdateDTO;
 import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +71,8 @@ public class UserService {
             existingUser.setPhone(dto.getPhone());
         if (dto.getEmail() != null)
             existingUser.setEmail(dto.getEmail());
-        if (dto.getAvatar() != null)
-            existingUser.setAvatar(dto.getAvatar());
+        if (dto.getPoints() != null)
+            existingUser.setPoints(dto.getPoints());
 
         userRepo.updateUserById(existingUser);
         return true;

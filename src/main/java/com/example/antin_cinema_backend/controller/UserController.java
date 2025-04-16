@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.antin_cinema_backend.model.dto.UserUpdateDTO;
 import com.example.antin_cinema_backend.model.entity.Meta;
 import com.example.antin_cinema_backend.model.entity.PaginateData;
 import com.example.antin_cinema_backend.model.entity.User;
@@ -98,12 +99,18 @@ public class UserController {
     }
 
     @PutMapping("/UpdateUser")
-    public ResponseEntity<String> updateUser(@RequestBody UserUpdateDTO userDTO) throws Exception {
+    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody UserUpdateDTO userDTO) throws Exception {
         boolean updated = userService.updateUser(userDTO);
         if (updated) {
-            return ResponseEntity.ok("User updated successfully");
+            Map<String, Object> response = Map.of(
+                    "data", true,
+                    "message", "User updated successfully");
+            return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            Map<String, Object> response = Map.of(
+                    "data", false,
+                    "message", "User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
 
