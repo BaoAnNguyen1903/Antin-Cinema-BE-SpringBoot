@@ -7,10 +7,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.example.antin_cinema_backend.model.entity.Movie;
 import com.example.antin_cinema_backend.model.entity.MovieLanguage;
 import com.example.antin_cinema_backend.model.entity.MovieRated;
