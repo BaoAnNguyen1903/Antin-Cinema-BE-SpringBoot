@@ -2,7 +2,6 @@ package com.example.antin_cinema_backend.model.service;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
 import org.springframework.stereotype.Service;
 
 @Service
