@@ -2,7 +2,6 @@ package com.example.antin_cinema_backend.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.repo.UserRepo;
 import com.example.antin_cinema_backend.security.JwtUtil;
