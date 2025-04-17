@@ -211,6 +211,46 @@ public class UserRepo {
         return exists;
     }
 
+    public User registerUser(String name, String username, String password, String email) throws Exception {
+        Class.forName(Baseconnection.nameClass);
+        Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,
+                Baseconnection.password);
+
+        String sql = "INSERT INTO users (name, dob, gender, phone, email, username, password, avatar, points, status, role) "
+                +
+                "VALUES (?, NULL, NULL, NULL, ?, ?, ?, NULL, 0, 0, 'U')";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, name);
+        ps.setString(2, email);
+        ps.setString(3, username);
+        ps.setString(4, password);
+
+        ps.executeUpdate();
+
+        // Sau khi insert thành công, lấy thông tin user từ DB (dùng username)
+        String selectSql = "SELECT uid, name, username, email FROM users WHERE username = ?";
+        PreparedStatement selectPs = con.prepareStatement(selectSql);
+        selectPs.setString(1, username);
+        ResultSet rs = selectPs.executeQuery();
+        User newUser = null;
+
+        if (rs.next()) {
+            newUser = new User();
+            newUser.setUid(rs.getInt("uid"));
+            newUser.setName(rs.getString("name"));
+            newUser.setUsername(rs.getString("username"));
+            newUser.setEmail(rs.getString("email"));
+        }
+
+        rs.close();
+        selectPs.close();
+        ps.close();
+        con.close();
+
+        return newUser;
+    }
+
     public boolean existsByPhone(String phone) throws Exception {
         Class.forName(Baseconnection.nameClass);
         Connection con = DriverManager.getConnection(Baseconnection.url, Baseconnection.username,

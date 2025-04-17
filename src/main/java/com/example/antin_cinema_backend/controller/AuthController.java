@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.antin_cinema_backend.model.dto.LoginRequest;
+import com.example.antin_cinema_backend.model.dto.SignupRequest;
 import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.repo.UserRepo;
 import com.example.antin_cinema_backend.model.service.AccountService;
@@ -48,7 +49,6 @@ public class AuthController {
                 String accessToken = jwtUtil.generateToken(user.getUsername());
 
                 session.setAttribute("user", user);
-                System.out.println("user  : " + user);
                 Map<String, Object> userData = new HashMap<>();
                 userData.put("uid", user.getUid());
                 userData.put("name", user.getName());
@@ -148,5 +148,39 @@ public class AuthController {
                         return bearerToken.substring(7);
                 }
                 return null;
+        }
+
+        @PostMapping("/register")
+        public ResponseEntity<Map<String, Object>> register(@RequestBody SignupRequest request) {
+                Map<String, Object> response = new HashMap<>();
+                try {
+                        if (userRepo.existsByUsername(request.getUsername())) {
+                                response.put("error", "Username already exists");
+                                return ResponseEntity.badRequest().body(response);
+                        }
+
+                        if (userRepo.existsByEmail(request.getEmail())) {
+                                response.put("error", "Email already exists");
+                                return ResponseEntity.badRequest().body(response);
+                        }
+
+                        User newUser = userRepo.registerUser(
+                                        request.getName(),
+                                        request.getUsername(),
+                                        request.getPassword(),
+                                        request.getEmail());
+
+                        if (newUser != null) {
+                                response.put("data", newUser);
+                                return ResponseEntity.ok(response);
+                        } else {
+                                response.put("error", "User creation failed");
+                                return ResponseEntity.status(500).body(response);
+                        }
+
+                } catch (Exception e) {
+                        response.put("error", "Server error: " + e.getMessage());
+                        return ResponseEntity.status(500).body(response);
+                }
         }
 }
