@@ -171,7 +171,7 @@ public class MovieController {
         if (updated) {
             Map<String, Object> response = Map.of(
                     "data", true,
-                    "message", "User updated successfully");
+                    "message", "Movie updated successfully");
             return ResponseEntity.ok(response);
         } else {
             Map<String, Object> response = Map.of(
