@@ -17,12 +17,12 @@ public class Movie {
     private String movieName;
     private String movieDescription;
     private String movieDirector;
-    private String movieActor;  
+    private String movieActor;
     private MovieType movieType;
     private String movieTime;
     private MovieLanguage movieLanguage;
     private MovieRated movieRated;
-    private String poster;  
+    private String poster;
     private String banner;
     private LocalDate openday;
     private LocalDate closeday;

@@ -111,13 +111,4 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
-
-    @GetMapping
-    public ResponseEntity<?> getUsers(
-            @RequestParam(defaultValue = "1") int current,
-            @RequestParam(defaultValue = "5") int pageSize,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email) {
-        return ResponseEntity.ok(userService.getUsers(current, pageSize, name, email));
-    }
 }
