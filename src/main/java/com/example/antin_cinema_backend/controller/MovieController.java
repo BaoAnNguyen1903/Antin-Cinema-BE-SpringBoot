@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.antin_cinema_backend.model.dto.UserUpdateDTO;
 import com.example.antin_cinema_backend.model.entity.Meta;
 import com.example.antin_cinema_backend.model.entity.Movie;
 import com.example.antin_cinema_backend.model.entity.MovieLanguage;
@@ -166,8 +164,8 @@ public class MovieController {
     }
 
     @PutMapping("/UpdateMovie")
-    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody UserUpdateDTO userDTO) throws Exception {
-        boolean updated = movieService.updateUser(userDTO);
+    public ResponseEntity<Map<String, Object>> updateMovie(@RequestBody Movie movie) throws Exception {
+        boolean updated = movieService.updateMovie(movie);
         if (updated) {
             Map<String, Object> response = Map.of(
                     "data", true,
@@ -176,7 +174,7 @@ public class MovieController {
         } else {
             Map<String, Object> response = Map.of(
                     "data", false,
-                    "message", "User not found");
+                    "message", "Movie not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
