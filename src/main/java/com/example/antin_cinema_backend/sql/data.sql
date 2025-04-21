@@ -36,3 +36,14 @@ insert into movie_language(movie_language_name) values
 ('Phụ đề Tiếng Anh'),
 ('Lồng Tiếng Việt'),
 ('meo meo, gâu gâu');
+
+insert into movie(movie_name, movie_description, movie_director, movie_actor, mtid, movie_time, mlid, mrid, poster, banner, openday, closeday, movie_status) values
+('Gọi Tôi Là Huyền Thoại', 'Một câu chuyện cảm động về hành trình trưởng thành và vượt qua chính mình.', 'Trần Hữu Tâm', 'Lý Hải, Thái Hòa, Ninh Dương Lan Ngọc', 5, '120 phút', 2, 4, 'poster_huyenthoai.jpg', 'banner_huyenthoai.jpg', '2025-04-25', '2025-06-01', 1),
+
+('Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ', 'Conan cùng các đồng đội tham gia phá án tại Osaka với nhiều tình tiết gay cấn và lãng mạn.', 'Yasuichiro Yamamoto', 'Minami Takayama, Wakana Yamazaki, Rikiya Koyama', 10, '110 phút', 3, 3, 'poster_conan.jpg', 'banner_conan.jpg', '2025-04-20', '2025-06-15', 1),
+
+('Avengers: Cuộc Chiến Vô Cực', 'Các siêu anh hùng hợp lực để ngăn chặn Thanos hủy diệt vũ trụ.', 'Anthony Russo, Joe Russo', 'Robert Downey Jr., Chris Evans, Scarlett Johansson', 11, '149 phút', 1, 5, 'poster_avengers.jpg', 'banner_avengers.jpg', '2025-04-10', '2025-05-31', 1),
+
+('Mắt Biếc', 'Một chuyện tình tuổi học trò đầy cảm xúc dựa trên tiểu thuyết của Nguyễn Nhật Ánh.', 'Victor Vũ', 'Trần Nghĩa, Trúc Anh, Khánh Vân', 2, '117 phút', 2, 3, 'poster_matbiec.jpg', 'banner_matbiec.jpg', '2025-03-15', '2025-04-30', 0),
+
+('Frozen II', 'Elsa và Anna khám phá bí mật về sức mạnh phép thuật và nguồn gốc hoàng gia.', 'Chris Buck, Jennifer Lee', 'Idina Menzel, Kristen Bell, Josh Gad', 4, '103 phút', 5, 1, 'poster_frozen2.jpg', 'banner_frozen2.jpg', '2025-04-01', '2025-05-15', 1);
