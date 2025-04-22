@@ -35,12 +35,12 @@ public class KhachController {
             @RequestParam(defaultValue = "1") int current,
             @RequestParam(defaultValue = "5") int pageSize) throws Exception {
 
-        PaginatedResult<User> paginatedResult = khachService.getUsersPaginated(current, pageSize);
+        PaginatedResult<Khach> paginatedResult = khachService.getUsersPaginated(current, pageSize);
         int total = paginatedResult.getTotal();
         int pages = (int) Math.ceil((double) total / pageSize);
 
         Meta meta = new Meta(current, pageSize, pages, total);
-        PaginateData<User> paginatedData = new PaginateData<>(meta, paginatedResult.getResult());
+        PaginateData<Khach> paginatedData = new PaginateData<>(meta, paginatedResult.getResult());
 
         Map<String, Object> response = new HashMap<>();
         response.put("data", paginatedData);
