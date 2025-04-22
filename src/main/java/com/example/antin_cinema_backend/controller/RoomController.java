@@ -1,7 +1,6 @@
 package com.example.antin_cinema_backend.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.antin_cinema_backend.model.entity.Meta;
 import com.example.antin_cinema_backend.model.entity.PaginateData;
 import com.example.antin_cinema_backend.model.entity.Room;
-import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.service.PaginatedResult;
 import com.example.antin_cinema_backend.model.service.RoomService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,12 +32,12 @@ public class RoomController {
             @RequestParam(defaultValue = "1") int current,
             @RequestParam(defaultValue = "5") int pageSize) throws Exception {
 
-        PaginatedResult<User> paginatedResult = romService.getUsersPaginated(current, pageSize);
+        PaginatedResult<Room> paginatedResult = romService.getRoomsPaginated(current, pageSize);
         int total = paginatedResult.getTotal();
         int pages = (int) Math.ceil((double) total / pageSize);
 
         Meta meta = new Meta(current, pageSize, pages, total);
-        PaginateData<User> paginatedData = new PaginateData<>(meta, paginatedResult.getResult());
+        PaginateData<Room> paginatedData = new PaginateData<>(meta, paginatedResult.getResult());
 
         Map<String, Object> response = new HashMap<>();
         response.put("data", paginatedData);
