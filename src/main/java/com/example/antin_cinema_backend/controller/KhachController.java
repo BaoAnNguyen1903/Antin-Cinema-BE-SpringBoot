@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @Controller
-@RequestMapping("/api/v1/khach")
+@RequestMapping("/api/v1/guest")
 public class KhachController {
     @Autowired
     private KhachService khachService;
