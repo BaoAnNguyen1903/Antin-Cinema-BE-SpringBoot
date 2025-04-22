@@ -1,7 +1,6 @@
 package com.example.antin_cinema_backend.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,12 @@ public class KhachController {
     @GetMapping("/ViewAllGuestsList")
     public ResponseEntity<Map<String, Object>> getAllUsers(
             @RequestParam(defaultValue = "1") int current,
-            @RequestParam(defaultValue = "5") int pageSize) throws Exception {
+            @RequestParam(defaultValue = "5") int pageSize,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(required = false) String phone,
+            @RequestParam(required = false) String email) throws Exception {
 
-        PaginatedResult<Khach> paginatedResult = khachService.getUsersPaginated(current, pageSize);
+        PaginatedResult<Khach> paginatedResult = khachService.getGuestsPaginated(current, pageSize);
         int total = paginatedResult.getTotal();
         int pages = (int) Math.ceil((double) total / pageSize);
 

@@ -24,6 +24,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/v1/movie/**")
                 .excludePathPatterns("/api/v1/user/**")
+                .excludePathPatterns("/api/v1/guest/**")
                 .excludePathPatterns("/api/v1/auth/**"); // Không chặn login/register
     }
 }

@@ -2,11 +2,9 @@ package com.example.antin_cinema_backend.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.antin_cinema_backend.model.entity.Khach;
-import com.example.antin_cinema_backend.model.entity.User;
 import com.example.antin_cinema_backend.model.repo.KhachRepo;
 
 @Service
@@ -14,7 +12,7 @@ public class KhachService {
     @Autowired
     private KhachRepo khachRepo;
 
-    public PaginatedResult<Khach> getUsersPaginated(int current, int pageSize) throws Exception {
+    public PaginatedResult<Khach> getGuestsPaginated(int current, int pageSize) throws Exception {
         List<Khach> allGuests = khachRepo.getAllKhachs();
         int total = allGuests.size();
 
