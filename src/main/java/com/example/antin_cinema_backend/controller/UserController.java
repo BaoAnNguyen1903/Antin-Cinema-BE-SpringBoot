@@ -1,6 +1,8 @@
 package com.example.antin_cinema_backend.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -111,4 +113,64 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
+
+    // @PostMapping("/bulk-create")
+    // public ResponseObject<BulkCreateResponse> bulkCreateUser(@RequestBody List<UserRequest> users) {
+    //     int countSuccess = 0;
+    //     int countError = 0;
+    //     List<String> errorMessages = new ArrayList<>();
+
+    //     for (UserRequest userDto : users) {
+    //         try {
+    //             boolean existsUsername = userRepo.existsByUsername(userDto.getUsername());
+    //             boolean existsEmail = userRepo.existsByEmail(userDto.getEmail());
+    //             boolean existsPhone = userRepo.existsByPhone(userDto.getPhone());
+
+    //             if (existsUsername) {
+    //                 errorMessages.add("Username '" + userDto.getUsername() + "' đã tồn tại.");
+    //                 countError++;
+    //                 continue;
+    //             }
+
+    //             if (existsEmail) {
+    //                 errorMessages.add("Email '" + userDto.getEmail() + "' đã tồn tại.");
+    //                 countError++;
+    //                 continue;
+    //             }
+
+    //             if (existsPhone) {
+    //                 errorMessages.add("Số điện thoại '" + userDto.getPhone() + "' đã tồn tại.");
+    //                 countError++;
+    //                 continue;
+    //             }
+
+    //             // Nếu qua hết các check -> tạo user
+    //             User user = new User();
+    //             user.setName(userDto.getName());
+    //             user.setUsername(userDto.getUsername());
+    //             user.setPassword(userDto.getPassword());
+    //             user.setEmail(userDto.getEmail());
+    //             user.setPhone(userDto.getPhone());
+
+    //             user.setDob(null);
+    //             user.setGender(null);
+    //             user.setAvatar(null);
+    //             user.setPoints(0);
+    //             user.setStatus(0);
+    //             user.setRole("U");
+
+    //             userRepo.createUser(user);
+    //             countSuccess++;
+
+    //         } catch (Exception e) {
+    //             e.printStackTrace();
+    //             errorMessages.add("Lỗi hệ thống khi tạo user '" + userDto.getUsername() + "'.");
+    //             countError++;
+    //         }
+    //     }
+
+    //     BulkCreateResponse response = new BulkCreateResponse(countSuccess, countError, errorMessages);
+    //     return new ResponseObject<>(response);
+    // }
+
 }
